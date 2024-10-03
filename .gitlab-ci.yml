@@ -1,0 +1,24 @@
+default:
+    image: rust:alpine
+
+stages:
+    - build
+    - release
+
+build-calendar:
+    stage: build
+    artifacts:
+        paths:
+            - out/steam_sales.ics
+    script:
+        - cargo run
+
+create-release:
+    stage: release
+    script:
+        - abk add glab
+        - echo "${GITLAB_ACCESS_TOKEN}" | glab auth login --stdin
+        - > 
+            glab release create "Steam Calendar"\
+                --name "Steam Calendar"\
+                "out/steam_sales.ics"
