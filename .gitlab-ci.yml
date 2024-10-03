@@ -16,7 +16,7 @@ build-calendar:
 create-release:
     stage: release
     script:
-        - abk add glab
+        - apk add glab
         - echo "${GITLAB_ACCESS_TOKEN}" | glab auth login --stdin
         - > 
             glab release create "Steam Calendar"\
