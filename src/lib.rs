@@ -3,7 +3,15 @@ use icalendar::{Calendar, Component, Event, EventLike};
 mod sale;
 pub use sale::Sale;
 
-pub fn make_calendar(sales: &[Sale]) {
+mod sales;
+
+pub fn run() {
+    let sales = sales::get_sales();
+    let ical = make_calendar(&sales);
+    std::fs::write("/tmp/steam_sales.ics", ical).unwrap();
+}
+
+pub fn make_calendar(sales: &[Sale]) -> String {
     let mut calendar = Calendar::new().name("Steam Sales").done();
 
     sales
@@ -19,5 +27,5 @@ pub fn make_calendar(sales: &[Sale]) {
             calendar.push(event);
         });
 
-    std::fs::write("/tmp/steam_sales.ics", calendar.to_string()).unwrap();
+    calendar.to_string()
 }
