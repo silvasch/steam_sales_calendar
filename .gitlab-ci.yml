@@ -19,6 +19,6 @@ create-release:
         - apk add glab
         - echo "${GITLAB_ACCESS_TOKEN}" | glab auth login --stdin
         - > 
-            glab release create "v1.0"\
+            glab release create "$CI_JOB_STARTED_AT"\
                 --name "Steam Calendar"\
                 "out/steam_sales.ics"
