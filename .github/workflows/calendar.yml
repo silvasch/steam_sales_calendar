@@ -37,3 +37,4 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./out/calendar.ics
         asset_name: calendar.ics
+        asset_content_type: text/calendar
