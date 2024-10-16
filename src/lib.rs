@@ -13,7 +13,10 @@ pub fn run() {
 }
 
 pub fn make_calendar(sales: &[Sale]) -> String {
-    let mut calendar = Calendar::new().name("Steam Sales").done();
+    let mut calendar = Calendar::new()
+        .name("Steam Sales")
+        .description("See the next steam sales right in your calendar.")
+        .done();
 
     sales
         .iter()
