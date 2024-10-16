@@ -1,0 +1,30 @@
+name: Calendar
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build
+      run: cargo run --verbose
+    - name: Release
+      uses: actions/create-release@v1
+      with:
+        draft: false
+        prerelease: false
+        release_name: ${{ github.sha }}
+        tag_name: ${{ github.sha }}
+        body: "New release!"
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      
