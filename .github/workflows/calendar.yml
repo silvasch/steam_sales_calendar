@@ -2,7 +2,10 @@ name: Calendar
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+    tags:
+      - v*
 
 env:
   CARGO_TERM_COLOR: always
@@ -21,8 +24,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v2024
-        release_name: Release v2024
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
         draft: false
         body: ""
         prerelease: false
