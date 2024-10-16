@@ -23,7 +23,7 @@ jobs:
         draft: false
         prerelease: false
         release_name: ${{ github.sha }}
-        tag_name: ${{ github.ref }}
+        tag_name: ${{ github.sha }}
         body: "New release!"
       env:
         GITHUB_TOKEN: ${{ github.token }}
