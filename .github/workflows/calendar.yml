@@ -35,6 +35,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./out/calendar.ics
-        asset_name: calendar.ics
+        asset_path: ./out/steam_sales.ics
+        asset_name: steam_sales.ics
         asset_content_type: text/calendar
