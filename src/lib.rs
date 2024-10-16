@@ -8,7 +8,7 @@ mod sales;
 pub fn run() {
     let sales = sales::get_sales();
     let ical = make_calendar(&sales);
-    std::fs::create_dir("out").unwrap();
+    std::fs::create_dir_all("out").unwrap();
     std::fs::write("out/steam_sales.ics", ical).unwrap();
 }
 
